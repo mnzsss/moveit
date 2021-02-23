@@ -1,0 +1,9 @@
+{
+  "name": "nextjs",
+  "short_name": "nextjs ",
+  "theme_color": "#100f12",
+  "background_color": "#100f12",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/"
+}
