@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaPlay, FaRedo, FaGrinStars } from 'react-icons/fa'
+import { FaPlay, FaSkull, FaGrinStars } from 'react-icons/fa'
 
 import { Container } from './styles'
 
@@ -53,18 +53,18 @@ const Countdown: React.FC = () => {
 
       {hasFinished ? (
         <button type="button" disabled>
-          <FaGrinStars />
           Ciclo encerrado
+          <FaGrinStars />
         </button>
       ) : isActive ? (
         <button type="button" className="active" onClick={handleResetCountdown}>
-          <FaRedo />
           Abandonar ciclo
+          <FaSkull />
         </button>
       ) : (
         <button type="button" onClick={handleStartCountdown}>
-          <FaPlay />
           Iniciar um ciclo
+          <FaPlay />
         </button>
       )}
     </Container>

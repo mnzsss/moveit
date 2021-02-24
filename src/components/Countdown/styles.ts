@@ -54,7 +54,7 @@ export const Container = styled.div`
     transition: all 0.2s ease;
 
     svg {
-      margin-right: 1rem;
+      margin-left: 1rem;
     }
 
     &:not(:disabled):hover {
@@ -75,6 +75,7 @@ export const Container = styled.div`
       background-color: ${({ theme }) => theme.colors.white};
       color: ${({ theme }) => theme.colors.text};
       cursor: not-allowed;
+      border-bottom: 4px solid ${({ theme }) => theme.colors.blue};
 
       svg {
         color: ${({ theme }) => theme.colors.blue};
