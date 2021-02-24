@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import React from 'react'
 
 import {
+  ChallangeBox,
   CompletedChallanges,
   Countdown,
   ExperienceBar,
@@ -22,7 +23,9 @@ const Home: NextPage = () => {
           <Countdown />
         </div>
 
-        <div></div>
+        <div>
+          <ChallangeBox />
+        </div>
       </section>
     </Container>
   )

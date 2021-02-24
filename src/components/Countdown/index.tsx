@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { FaPlay, FaSkull, FaGrinStars } from 'react-icons/fa'
 
+import { useChallenges } from 'hooks/challenges'
+
 import { Container } from './styles'
 
 let countdownTimeout: NodeJS.Timeout
 
 const Countdown: React.FC = () => {
+  const { startNewChallenge } = useChallenges()
+
   const [time, setTime] = useState(0.1 * 60)
   const [isActive, setIsActive] = useState(false)
   const [hasFinished, setHasFinished] = useState(false)
@@ -32,6 +36,7 @@ const Countdown: React.FC = () => {
     } else if (isActive && time === 0) {
       setHasFinished(true)
       setIsActive(false)
+      startNewChallenge()
     }
   }, [isActive, time])
 

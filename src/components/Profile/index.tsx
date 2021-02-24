@@ -2,8 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 
 import { Container } from './styles'
+import { useChallenges } from 'hooks/challenges'
 
 const Profile: React.FC = () => {
+  const { level } = useChallenges()
+
   return (
     <Container>
       <img
@@ -15,7 +18,7 @@ const Profile: React.FC = () => {
         <strong>Gabriel Menezes</strong>
         <p>
           <Image src="/icons/level.svg" alt="Level" width={14} height={16} />
-          Level 1
+          Level {level}
         </p>
       </div>
     </Container>

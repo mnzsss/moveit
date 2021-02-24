@@ -3,6 +3,8 @@ import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import Head from 'next/head'
 
+import { ChallengesProvider } from 'hooks/challenges'
+
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 
@@ -13,10 +15,12 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <title>Inicio | move.it</title>
       </Head>
 
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-        <GlobalStyle />
-      </ThemeProvider>
+      <ChallengesProvider>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+          <GlobalStyle />
+        </ThemeProvider>
+      </ChallengesProvider>
     </>
   )
 }
