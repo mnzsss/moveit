@@ -53,8 +53,32 @@ export const Container = styled.div`
     font-weight: 600;
     transition: all 0.2s ease;
 
-    &:hover {
+    svg {
+      margin-right: 1rem;
+    }
+
+    &:not(:disabled):hover {
       background-color: ${({ theme }) => theme.colors.blue_dark};
+    }
+
+    &.active {
+      background-color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.title};
+
+      &:not(:disabled):hover {
+        background-color: ${({ theme }) => theme.colors.red};
+        color: ${({ theme }) => theme.colors.white};
+      }
+    }
+
+    &:disabled {
+      background-color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.text};
+      cursor: not-allowed;
+
+      svg {
+        color: ${({ theme }) => theme.colors.blue};
+      }
     }
   }
 `
