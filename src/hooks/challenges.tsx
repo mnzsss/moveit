@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import challenges from '../../challenges.json'
 
 interface Challenge {
@@ -31,11 +31,23 @@ export const ChallengesProvider: React.FC = ({ children }) => {
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
+  useEffect(() => {
+    Notification.requestPermission()
+  }, [])
+
   const addLevel = () => setLevel(level + 1)
 
   const startNewChallenge = () => {
     const randomChallenge = Math.floor(Math.random() * challenges.length)
     setActiveChallenge(challenges[randomChallenge])
+
+    new Audio('/notification.mp3').play()
+
+    if (Notification.permission === 'granted') {
+      new Notification('Novo desafio 🎉', {
+        body: `Valendo ${challenges[randomChallenge].amount}xp`
+      })
+    }
   }
 
   const resetChallenge = () => setActiveChallenge(null)
