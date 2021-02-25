@@ -4,9 +4,21 @@ import Image from 'next/image'
 import { useChallenges } from 'hooks/challenges'
 
 import { Container } from './styles'
+import { useCountdown } from 'hooks/countdown'
 
 const ChallangeBox: React.FC = () => {
-  const { activeChallenge, resetChallenge } = useChallenges()
+  const { activeChallenge, resetChallenge, completeChallenge } = useChallenges()
+  const { handleResetCountdown } = useCountdown()
+
+  const handleChallengeSucceeded = () => {
+    completeChallenge()
+    handleResetCountdown()
+  }
+
+  const handleChallengeFailed = () => {
+    resetChallenge()
+    handleResetCountdown()
+  }
 
   return (
     <Container>
@@ -26,10 +38,15 @@ const ChallangeBox: React.FC = () => {
           </main>
 
           <footer>
-            <button className="failedButton" onClick={resetChallenge}>
+            <button className="failedButton" onClick={handleChallengeFailed}>
               Falhei
             </button>
-            <button className="succeededButton">Completei</button>
+            <button
+              className="succeededButton"
+              onClick={handleChallengeSucceeded}
+            >
+              Completei
+            </button>
           </footer>
         </div>
       ) : (

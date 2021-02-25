@@ -1,6 +1,8 @@
 import { NextPage } from 'next'
 import React from 'react'
 
+import { CountdownProvider } from 'hooks/countdown'
+
 import {
   ChallangeBox,
   CompletedChallanges,
@@ -16,17 +18,19 @@ const Home: NextPage = () => {
     <Container>
       <ExperienceBar />
 
-      <section>
-        <div className="leftContainer">
-          <Profile />
-          <CompletedChallanges />
-          <Countdown />
-        </div>
+      <CountdownProvider>
+        <section>
+          <div className="leftContainer">
+            <Profile />
+            <CompletedChallanges />
+            <Countdown />
+          </div>
 
-        <div>
-          <ChallangeBox />
-        </div>
-      </section>
+          <div>
+            <ChallangeBox />
+          </div>
+        </section>
+      </CountdownProvider>
     </Container>
   )
 }
